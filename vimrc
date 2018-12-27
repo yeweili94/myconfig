@@ -28,6 +28,16 @@ filetype plugin indent on
 
 "*******************************leader****************************
 let mapleader = ","
+"*******************************neocomplete****************************
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" " Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" " Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 "*******************************vim-indent-guide****************************
 let g:indent_guides_enable_on_vim_startup = 1
 set ts=4 sw=4 et
@@ -68,13 +78,26 @@ let NERDTreeWinSize=25
 let g:NERDTree_title='NERD Tree'
 map <F9> :NERDTreeToggle<CR>
 "*****************************syntastic******************************
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+let g:syntastic_cpp_check_header = 1
+" let g:syntastic_cpp_remove_include_errors = 1
+
+"设置工程查找头文件
+let g:syntastic_cpp_config_file = '.my_custom_include_file_for_syntastic'
+
+" 设置语法检查编译器
 let g:syntastic_cpp_checkers = ['gcc']
 let g:syntastic_cpp_compiler = 'gcc'
 let g:syntastic_cpp_compiler_options = '-std=c++11'
+" let g:syntastic_cpp_compiler = 'clang++'
+" let g:syntastic_cpp_compiler_options = '-std=c++11 -stdlib=libc++'
 "************************************vim-commentary****************************
 autocmd FileType python,shell,coffee set commentstring=#\ %s
 autocmd FileType java,c,cpp set commentstring=//\ %s
-"************************************my-set****************************
 "************************************my-set****************************
 "代码缩进以及排版
 set autoindent           " 设置自动缩进
