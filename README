@@ -9,7 +9,9 @@ enjoy!
 note:
 syntastic插件是一个语法检错插件，非常的好用
 如何解决syntestic找不到工程头文件的问题?
-需要在工程文件夹根目录下创建一个和vimrc同名的文件,比如.include_file
+需要在工程文件夹根目录下创建一个和
+let g:syntastic_cpp_config_file = '.include_file'同名的文件,比如.include_file
 在配置文件中添加头文件的目录，每个目录占一行比如:
 -I/home/**/myproject
 -I/home/**/myproject/include
+-I/home/**/myproject/include/dir1
